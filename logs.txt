@@ -1,0 +1,74 @@
+
+18:48:58 | <*.freenode.net 451 crispy240588 PRIVMSG> Closing link: (crispy2405@95.214.210.212) [Incorrect ping reply for registration]
+
+18:52:27 | <*.freenode.net 451 crispy240588 PRIVMSG> Closing link: (crispy2405@95.214.210.212) [Incorrect ping reply for registration]
+
+18:55:46 | <*.freenode.net 451 crispy240588 PRIVMSG> Closing link: (crispy2405@95.214.210.212) [Incorrect ping reply for registration]
+
+18:57:08 | <*.freenode.net 451 crispy240588 PRIVMSG> Closing link: (crispy2405@95.214.210.212) [Incorrect ping reply for registration]
+
+19:03:17 | <*.freenode.net 451 crispy240588 PRIVMSG> You have not registered.
+
+19:06:32 | <*.freenode.net 451 web-14 PRIVMSG> You have not registered.
+
+19:08:13 | <*.freenode.net 451 web-14 PRIVMSG> You have not registered.
+
+19:10:59 | <*.freenode.net 451 web-14 PRIVMSG> Closing link: (web-14@95.214.210.212) [Incorrect ping reply for registration]
+
+19:11:39 | <*.freenode.net 451 web-14 PRIVMSG> You have not registered.
+
+19:15:30 | <*.freenode.net 451 web-14 JOIN> *.freenode.net 451 web-14 PRIVMSG :You have not registered.
+:*.freenode.net NOTICE web-14 :*** Ident lookup timed out, using ~web-14 instead.
+
+19:16:39 | <*.freenode.net 451 web-14 PRIVMSG> Closing link: (web-14@95.214.210.212) [Incorrect ping reply for registration]
+
+19:17:03 | <*.freenode.net 451 web-14 PRIVMSG> You have not registered.
+
+19:17:57 | <*.freenode.net 451 web-14 PRIVMSG> You have not registered.
+
+19:28:54 | <CTCPServ!services@services.oftc.net PRIVMSG web-14> NickServ!services@services.oftc.net NOTICE web-14 :Too few parameters.  Expected at least 1.  Got 0.
+:NickServ!services@services.oftc.net NOTICE web-14 :*** IDENTIFY Help *** 
+:NickServ!services@services.oftc.net NOTICE web-14 :Usage: IDENTIFY password [nick]
+:NickServ!services@services.oftc.net NOTICE web-14 : 
+:NickServ!services@services.oftc.net NOTICE web-14 :Identify that you are the owner of the nick you are currently using.
+:NickServ!services@services.oftc.net NOTICE web-14 :If you specify a nickname to identify against, your IRC nick will
+:NickServ!services@services.oftc.net NOTICE web-14 :automatically be changed to the one you identify for.
+:NickServ!services@services.oftc.net NOTICE web-14 : 
+:NickServ!services@services.oftc.net NOTICE web-14 :See also: REGISTER
+:NickServ!services@services.oftc.net NOTICE web-14 :*** End of IDENTIFY Help ***
+
+19:33:34 | <Fleet> wtf?
+
+19:33:50 | <mikeb!mikeb@heya.ninja PRIVMSG #worldchat> we have a thunderstorm going on today. pretty weird for january
+
+19:33:52 | <Fleet> We have a bot announcing joins now?
+
+19:34:09 | <Otto!qwerty@muumi.lnet.fi PRIVMSG #worldchat> we don't
+
+19:34:15 | <Fleet> web-14: 
+
+19:41:51 | <plasma!plasma@neptun.plasmatrix.eu.org PRIVMSG #worldchat> botnet buildup
+
+19:41:56 | <mikeb!mikeb@heya.ninja PRIVMSG #worldchat> `[-] Banned.`
+
+19:42:07 | <salmonhatt!salmonhat@trolls.wtf PRIVMSG #worldchat> lol
+
+19:42:15 | <salmonhatt!salmonhat@trolls.wtf PRIVMSG #worldchat> E
+
+19:42:19 | <plasma!plasma@neptun.plasmatrix.eu.org PRIVMSG #worldchat> C
+
+19:42:23 | <salmonhatt!salmonhat@trolls.wtf PRIVMSG #worldchat> :|
+
+19:42:26 | <Otto!qwerty@muumi.lnet.fi PRIVMSG #worldchat> one-bot botnet seems a bit weak though
+
+19:42:48 | <Otto!qwerty@muumi.lnet.fi PRIVMSG #worldchat> why not? do you have something against bots?
+
+19:42:50 | <mikeb!mikeb@heya.ninja PRIVMSG #worldchat> that's just what a bot would say
+
+19:43:06 | <plasma!plasma@neptun.plasmatrix.eu.org PRIVMSG #worldchat> :D
+
+19:43:27 | <salmonhatt!salmonhat@trolls.wtf PRIVMSG #worldchat> correct
+
+19:43:41 | <mikeb!mikeb@heya.ninja PRIVMSG #worldchat> we're just getting warmed up
+
+19:43:58 | <Otto!qwerty@muumi.lnet.fi PRIVMSG #worldchat> I'm more median than mean
