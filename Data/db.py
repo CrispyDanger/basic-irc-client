@@ -1,16 +1,16 @@
+from Data.db_init import Database
 
 def start():
-    from db_init import Database
     
     db = Database().connect()
     print("Database initialized", db)
-    db.execute("""CREATE TABLE IF NOT EXISTS users(user_id INTEGER NOT NULL UNIQUE PRIMARY KEY,
+    db.execute("""CREATE TABLE IF NOT EXISTS users(user_id TEXT NOT NULL UNIQUE PRIMARY KEY,
                                                 username TEXT NOT NULL, 
                                                 password TEXT NOT NULL, 
                                                 server_id INTEGER);
                 """)
                 
-    db.execute("""CREATE TABLE IF NOT EXISTS servers(server_id INTEGER NOT NULL UNIQUE PRIMARY KEY,
+    db.execute("""CREATE TABLE IF NOT EXISTS servers(server_id TEXT NOT NULL UNIQUE PRIMARY KEY,
                                                     server TEXT NOT NULL, 
                                                     port INTEGER NOT NULL, 
                                                     channel TEXT NOT NULL,

@@ -14,6 +14,6 @@ class Database(metaclass=MetaSingleton):
 
     def connect(self):
         if self.connection is None:
-            self.connection = sqlite3.connect("db/user.db")
+            self.connection = sqlite3.connect("user.db")
             self.cursorobj = self.connection.cursor()
         return self.cursorobj
