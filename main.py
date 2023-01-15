@@ -1,7 +1,7 @@
+import bcrypt
 import Data.db as database
 # from irc import IRC_Client
 from uuid import uuid4
-import bcrypt
 import getpass 
 
 
