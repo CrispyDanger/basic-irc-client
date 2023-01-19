@@ -138,9 +138,11 @@ class Servers:
         self.submit.place(x=200, y=200)
 
 
+
     def run(self):
         self.serverListWindow.mainloop()
         # print(result)
+
 
 
     def selected(self):
@@ -153,6 +155,15 @@ class Servers:
         self.port = self.port_entry.get()
         self.channel = self.channel_entry.get()
         data = (self.server,self.port,self.channel)
+        data_test = (self.server,self.port,self.channel, "user")
+        result = db.searchServers(data)
+        
+        if result:
+            db.addServer(data_test)
+            self.listbox.insert(0, str(data_test[:3]))
+        else:
+            messagebox.showwarning("Warning", "Server already in the list")
+
         
         
         

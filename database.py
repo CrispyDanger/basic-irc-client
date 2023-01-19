@@ -74,9 +74,8 @@ class Database:
 
     def serverList(self):
         data = """
-        SELECT server, port FROM servers;
+        SELECT server, port, channel FROM servers;
         """
-        # print(username)
         self.curr.execute(data)
         fetch = self.curr.fetchall()
         print(fetch)
@@ -92,7 +91,7 @@ class Database:
         self.conn.commit()
 
 
-    def searchUsers(self, data):
+    def searchServers(self, data):
         search_data = """
         SELECT * FROM servers WHERE server = (?) AND port = (?) AND channel = (?);
         """
