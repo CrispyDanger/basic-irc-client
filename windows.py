@@ -4,54 +4,6 @@ import bcrypt
 from database import Database
 
 db = Database()
-db.createTable()
-
-
-# class Login:
-#     def __init__(self):
-#         self.loginWindow = Tk()
-#         self.loginWindow.title("Login with Python")
-#         self.loginWindow.geometry("300x250")
-#         self.label = Label(self.loginWindow, text="Login")
-#         self.label.place(x=95, y=40)
-        
-
-#         self.username_entry = Entry(
-#         self.loginWindow, relief=FLAT)
-#         self.username_entry.place(x=70, y=80)
-#         self.password_entry = Entry(
-#         self.loginWindow, show="*", relief=FLAT)
-#         self.password_entry.place(x=70, y=120)
-        
-#         # Actual Variales
-        
-#         self.submit = Button(self.loginWindow, text="Submit",
-#         pady=5, padx=20, command=self.validate)
-#         self.submit.place(x=100, y=150)
-
-
-#     def validate(self):
-#         self.username = self.username_entry.get()
-#         self.password = self.password_entry.get()
-#         data = (self.username,)
-#         inputData = (self.username, self.password,)
-#         try:
-#             if (db.validateData(data, inputData)):
-#                 messagebox.showinfo("Successful", "Login Was Successful")
-#             else:
-#                 messagebox.showerror("Error", "Wrong Credentials")
-#         except IndexError:
-#             messagebox.showerror("Error", "Wrong Credentials")
-
-
-#     def run(self):
-#         self.loginWindow.mainloop()
-#         return self.username_entry.get()
-
-    
-#     def update(self):
-#         print("This fnc was called")
-
 
 
 class Register:
@@ -72,11 +24,9 @@ class Register:
         self.submit.place(x=100, y=150)
         
         
-        
-    
-    
     def run(self):
         self.registerWindow.mainloop()
+
 
 
     def add(self):
@@ -150,30 +100,35 @@ class Servers:
 
     def run(self):
         self.serverListWindow.mainloop()
-        # print(result)
-
 
 
     def selected(self):
-        for i in self.listbox.curselection():
-            print(self.listbox.get(i))  
+        for server in self.listbox.curselection():
+            self.connect(server)
+
+
+    def connect(self,server):
+        return server
 
 
     def add(self):
         self.server = self.server_entry.get()
         self.port = self.port_entry.get()
-        self.channel = self.channel_entry.get()
-        if self.channel.startswith("#"):
-            pass
+        if self.port.isdigit() and len(self.port) == 4:
+            self.channel = self.channel_entry.get()
+            if self.channel.startswith("#"):
+                pass
+            else:
+                self.channel = "#" + self.channel
+            data = (self.server,self.port,self.channel, self.username)
+            result = db.searchServers(data)
+            if result:
+                db.addServer(data)
+                self.listbox.insert(0, str(data[:3]))
+            else:
+                messagebox.showwarning("Warning", "Server already in the list")
         else:
-            self.channel = "#" + self.channel
-        data = (self.server,self.port,self.channel, self.username)
-        result = db.searchServers(data)
-        if result:
-            db.addServer(data)
-            self.listbox.insert(0, str(data[:3]))
-        else:
-            messagebox.showwarning("Warning", "Server already in the list")
+            messagebox.showwarning("Warning", "Port is not a number or exceeds 4 symbol limit")
 
         
         

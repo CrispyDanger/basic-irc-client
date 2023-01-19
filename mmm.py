@@ -6,8 +6,6 @@ from threading import Event
 import re
 import os
 from datetime import datetime
-import main as menu
-
 
 
 
@@ -52,7 +50,7 @@ def read_messages():
 
 try:
     irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server,port,channel,botnick = menu.main()
+    server,port,channel,botnick = windows.connect()
     botpassw = ""
     log_to_file = True
 

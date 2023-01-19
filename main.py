@@ -4,7 +4,7 @@ from windows import Register,Servers
 from database import Database
 
 db = Database()
-db.createTable()
+
 
 class MainWindow:
     def __init__(self):
@@ -13,9 +13,7 @@ class MainWindow:
         self.app.geometry("300x250")
         self.label = Label(self.app, text="Welcome To App")
         self.label.place(x=95, y=40)
-        # self.login = Button(self.app, text="Login",
-        #                     pady=5, padx=30, command=self.login_fnc)
-        # self.login.place(x=100, y=100)
+
 
         self.label = Label(self.app, text="Login")
         self.label.place(x=90, y=60)
@@ -28,7 +26,6 @@ class MainWindow:
         self.app, show="*", relief=FLAT)
         self.password_entry.place(x=90, y=120)
         
-        # Actual Variales
         
         self.submit = Button(self.app, text="Login",
         pady=5, padx=20, command=self.validate)
@@ -47,6 +44,7 @@ class MainWindow:
        self.password = self.password_entry.get()
        data = (self.username,)
        inputData = (self.username, self.password,)
+       
        try:
            if (db.validateData(data, inputData)):
                messagebox.showinfo("Successful", "Login Was Successful")
@@ -55,11 +53,6 @@ class MainWindow:
                messagebox.showerror("Error", "Wrong Credentials")
        except IndexError:
            messagebox.showerror("Error", "Wrong Credentials")   
-
-
-    # def login_fnc(self):
-    #     self.loginTk = Login()
-    #     self.loginTk.run()
 
 
 

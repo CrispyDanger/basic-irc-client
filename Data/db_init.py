@@ -9,11 +9,11 @@ class MetaSingleton(type):
         return cls._instances[cls]
 
 
-class Database(metaclass=MetaSingleton):
+class DBConnectiom(metaclass=MetaSingleton):
     connection = None
 
     def connect(self):
         if self.connection is None:
-            self.connection = sqlite3.connect("user.db")
+            self.connection = sqlite3.connect("test.db")
             self.cursorobj = self.connection.cursor()
         return self.cursorobj
