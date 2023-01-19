@@ -16,7 +16,7 @@ class Database:
     def createTable(self):
         create_table_user = """CREATE TABLE IF NOT EXISTS cred(
                     id Integer PRIMARY KEY AUTOINCREMENT,
-        username TEXT NOT NULL,
+        username TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL
         );
         """
@@ -26,7 +26,7 @@ class Database:
                                                     server TEXT NOT NULL, 
                                                     port INTEGER NOT NULL, 
                                                     channel TEXT NOT NULL,
-                                                    username INTEGER NOT NULL,
+                                                    username INTEGER NOT NULL UNIQUE,
                                                     FOREIGN KEY(username) REFERENCES cred(username)
                                                     ON DELETE CASCADE ON UPDATE CASCADE);"""
 
@@ -72,11 +72,12 @@ class Database:
 
     
 
-    def serverList(self):
+    def serverList(self, username):
+        userdata = (username, )
         data = """
-        SELECT server, port, channel FROM servers;
+        SELECT server, port, channel FROM servers WHERE username = (?);
         """
-        self.curr.execute(data)
+        self.curr.execute(data, userdata)
         fetch = self.curr.fetchall()
         print(fetch)
 
@@ -93,7 +94,7 @@ class Database:
 
     def searchServers(self, data):
         search_data = """
-        SELECT * FROM servers WHERE server = (?) AND port = (?) AND channel = (?);
+        SELECT * FROM servers WHERE server = (?) AND port = (?) AND channel = (?) AND username = (?);
         """
         self.curr.execute(search_data, data)
         rows = self.curr.fetchall()

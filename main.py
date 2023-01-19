@@ -1,7 +1,10 @@
-from tkinter import Tk,Label,Button
-from windows import Login, Register,Servers
+from tkinter import *
+from tkinter import messagebox
+from windows import Register,Servers
+from database import Database
 
-
+db = Database()
+db.createTable()
 
 class MainWindow:
     def __init__(self):
@@ -10,25 +13,53 @@ class MainWindow:
         self.app.geometry("300x250")
         self.label = Label(self.app, text="Welcome To App")
         self.label.place(x=95, y=40)
-        self.login = Button(self.app, text="Login",
-                            pady=5, padx=30, command=self.login_fnc)
-        self.login.place(x=100, y=100)
+        # self.login = Button(self.app, text="Login",
+        #                     pady=5, padx=30, command=self.login_fnc)
+        # self.login.place(x=100, y=100)
+
+        self.label = Label(self.app, text="Login")
+        self.label.place(x=90, y=60)
+        
+
+        self.username_entry = Entry(
+        self.app, relief=FLAT)
+        self.username_entry.place(x=90, y=80)
+        self.password_entry = Entry(
+        self.app, show="*", relief=FLAT)
+        self.password_entry.place(x=90, y=120)
+        
+        # Actual Variales
+        
+        self.submit = Button(self.app, text="Login",
+        pady=5, padx=20, command=self.validate)
+        self.submit.place(x=150, y=150)
         self.register = Button(self.app, text="Register",
                                pady=5, padx=20, command=self.register_fnc)
-        self.register.place(x=100, y=150)
-        self.register = Button(self.app, text="Servers",
-                               pady=5, padx=20, command=self.server_list_fnc)
-        self.register.place(x=100, y=200)
+        self.register.place(x=50, y=150)
 
 
     def run(self):
         self.app.mainloop()
 
 
+    def validate(self):
+       self.username = self.username_entry.get()
+       self.password = self.password_entry.get()
+       data = (self.username,)
+       inputData = (self.username, self.password,)
+       try:
+           if (db.validateData(data, inputData)):
+               messagebox.showinfo("Successful", "Login Was Successful")
+               self.server_list_fnc(self.username)
+           else:
+               messagebox.showerror("Error", "Wrong Credentials")
+       except IndexError:
+           messagebox.showerror("Error", "Wrong Credentials")   
 
-    def login_fnc(self):
-        loginTk = Login()
-        loginTk.run()
+
+    # def login_fnc(self):
+    #     self.loginTk = Login()
+    #     self.loginTk.run()
 
 
 
@@ -38,8 +69,8 @@ class MainWindow:
 
 
 
-    def server_list_fnc(self):
-        serverTk = Servers()
+    def server_list_fnc(self,username):
+        serverTk = Servers(username)
         serverTk.run
 
 
