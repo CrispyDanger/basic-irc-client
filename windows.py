@@ -2,7 +2,8 @@ from tkinter import *
 from tkinter import messagebox
 import bcrypt
 from database import Database
-from irc import IRCClient
+import irc
+import threading
 
 db = Database()
 
@@ -94,7 +95,7 @@ class Servers:
             self.listbox.insert(0, server)
 
         self.submit = Button(self.serverListWindow,
-        text="Connect", pady=5, padx=20, command=self.selected)
+        text="Connect", pady=5, padx=20, command=threading.Thread(target=self.selected).start)
         self.submit.place(x=200, y=200)
 
 
@@ -109,8 +110,7 @@ class Servers:
 
 
     def connect(self,server):
-        irc = IRCClient(server, self.username)
-        
+        irc.main(server, self.username)  
 
 
     def add(self):
