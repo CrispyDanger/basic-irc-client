@@ -3,7 +3,7 @@ from tkinter import messagebox
 from windows import Register,Servers
 from database import Database
 
-db = Database()
+
 
 
 class MainWindow:
@@ -11,6 +11,7 @@ class MainWindow:
         self.app = Tk()
         self.app.title("Login")
         self.app.geometry("300x250")
+        self.db = Database()
         self.label = Label(self.app, text="Welcome To App")
         self.label.place(x=95, y=40)
 
@@ -46,7 +47,7 @@ class MainWindow:
        inputData = (self.username, self.password,)
        
        try:
-           if (db.validateData(data, inputData)):
+           if (self.db.validateData(data, inputData)):
                messagebox.showinfo("Successful", "Login Was Successful")
                self.server_list_fnc(self.username)
            else:

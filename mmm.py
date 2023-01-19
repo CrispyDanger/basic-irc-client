@@ -6,6 +6,7 @@ from threading import Event
 import re
 import os
 from datetime import datetime
+from main import MainWindow
 
 
 
@@ -48,9 +49,9 @@ def read_messages():
             print(encoded)
             irc.send(encoded)
 
+
 try:
     irc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server,port,channel,botnick = windows.connect()
     botpassw = ""
     log_to_file = True
 

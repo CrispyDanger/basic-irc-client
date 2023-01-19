@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import messagebox
 import bcrypt
 from database import Database
+from irc import IRCClient
 
 db = Database()
 
@@ -82,7 +83,7 @@ class Servers:
 
         lst = db.serverList(self.username)
 
-        server_list = [str(server) for server in lst]
+        server_list = [server for server in lst]
         self.servers_var = Variable(value=server_list)
         self.selection_label = Label()
 
@@ -104,11 +105,12 @@ class Servers:
 
     def selected(self):
         for server in self.listbox.curselection():
-            self.connect(server)
+            self.connect(self.listbox.get(server))
 
 
     def connect(self,server):
-        return server
+        irc = IRCClient(server, self.username)
+        
 
 
     def add(self):
