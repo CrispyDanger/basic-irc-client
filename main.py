@@ -1,79 +1,48 @@
-import bcrypt
-import Data.db as database
-# from irc import IRC_Client
-from uuid import uuid4
-import getpass 
-
-
-db = database.start()
-
-
-def get_uuid():
-    return uuid4().hex
-
-
-def main():
-    print("Would you like to login? [y/n]")
-    inp = input()
-    if inp == "y":
-        login()
-    if inp == "n":
-        print("Do you want to register? [y/n]")
-        inp2 = input()
-        if inp2 == "y":
-            register()
+from tkinter import Tk,Label,Button
+from windows import Login, Register,Servers
 
 
 
-def login():
-    print("Please enter your login and password in this format <username:password>:")
-    login = input().split(":")
-    username = login[0]
-    password = login[1]
+class MainWindow:
+    def __init__(self):
+        self.app = Tk()
+        self.app.title("Login")
+        self.app.geometry("300x250")
+        self.label = Label(self.app, text="Welcome To App")
+        self.label.place(x=95, y=40)
+        self.login = Button(self.app, text="Login",
+                            pady=5, padx=30, command=self.login_fnc)
+        self.login.place(x=100, y=100)
+        self.register = Button(self.app, text="Register",
+                               pady=5, padx=20, command=self.register_fnc)
+        self.register.place(x=100, y=150)
+        self.register = Button(self.app, text="Servers",
+                               pady=5, padx=20, command=self.server_list_fnc)
+        self.register.place(x=100, y=200)
 
-    statement = (f"""SELECT username FROM users WHERE username='{username}' AND password = '{password}' """)
-    db.execute(statement)
 
-    if not db.fetchone():
-        print("User not Found!")
-        print("Do you want to register? [y/n]")
-        reg = input()
-        if reg == "y":
-            register()
-    else:
-        print("User Found!")
-
-
-def register():
-    print("Please enter your username:")
-    username = input()
-    find_username = (f"""SELECT username FROM users WHERE username='{username}';""")
-    db.execute(find_username)
-    if db.fetchone():
-        print("This user name was taken! Choouse another one")
-    else:
-        print("Please enter your password")
-        password = getpass.getpass(prompt="Password:").encode()
-        salt = bcrypt.gensalt()
-        hashed_password = bcrypt.hashpw(password, salt)
-        user = (get_uuid(), username, hashed_password)
-        statement = (f"""INSERT Into users(user_id, username, password) VALUES(?,?,?);""")
-        db.execute(statement, user)
-        db.execute("COMMIT;")
+    def run(self):
+        self.app.mainloop()
 
 
 
+    def login_fnc(self):
+        loginTk = Login()
+        loginTk.run()
 
 
 
+    def register_fnc(self):
+        registerTk = Register()
+        registerTk.run()
 
 
 
-if __name__ == "__main__":
-    main()
+    def server_list_fnc(self):
+        serverTk = Servers()
+        serverTk.run
 
 
 
-
-
-
+app = MainWindow()
+app.run()
