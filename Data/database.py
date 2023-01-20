@@ -6,7 +6,6 @@ class Database:
     def __init__(self):
         try:
             self.conn = DBConnectiom().connect()
-            print("Successfully Opened Database")
         except:
             print("Failed")
 
@@ -26,11 +25,12 @@ class Database:
                                                     channel TEXT NOT NULL,
                                                     username INTEGER NOT NULL UNIQUE,
                                                     FOREIGN KEY(username) REFERENCES cred(username)
-                                                    ON DELETE CASCADE ON UPDATE CASCADE);"""
+                                                    ON DELETE CASCADE ON UPDATE CASCADE);
+                                                    """
 
         self.conn.execute(create_table_user)
         self.conn.execute(create_table_server)
-        self.conn.execute("COMMIT;")
+
 
 
     def insertData(self, data):
@@ -55,8 +55,6 @@ class Database:
 
 
     def validateData(self, data, inputData):
-        print(data)
-        print(inputData)
         validate_data = """
         SELECT * FROM cred WHERE username = (?);
         """
@@ -77,7 +75,6 @@ class Database:
         """
         self.conn.execute(data, userdata)
         fetch = self.conn.fetchall()
-        print(fetch)
 
         return fetch
 

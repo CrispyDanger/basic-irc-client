@@ -14,6 +14,6 @@ class DBConnectiom(metaclass=MetaSingleton):
 
     def connect(self):
         if self.connection is None:
-            self.connection = sqlite3.connect("test.db")
+            self.connection = sqlite3.connect("data.db")
             self.cursorobj = self.connection.cursor()
         return self.cursorobj

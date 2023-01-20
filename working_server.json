@@ -1,0 +1,5 @@
+{
+    "server":"irc.ircnet.com",
+    "port":6667,
+    "channel": "#test"
+}

@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import bcrypt
-from database import Database
+from data.database import Database
 import irc
 import threading
 
@@ -38,7 +38,6 @@ class Register:
         self.hashed = bcrypt.hashpw(self.password.encode(), self.salt)
         data = (self.username,)
         result = db.searchUsers(data)
-        print(result)
         if result != 0:
             data = (self.username, self.hashed)
             db.insertData(data)
@@ -54,10 +53,7 @@ class Servers:
         self.serverListWindow = Toplevel()
         self.serverListWindow.title("Server_List")
         self.serverListWindow.geometry("400x250")
-
         self.username = username
-
-
 
         self.label = Label(self.serverListWindow, text="Server Address:")
         self.label.place(x=200, y=20)
@@ -94,8 +90,9 @@ class Servers:
         for server in server_list:  
             self.listbox.insert(0, server)
 
+
         self.submit = Button(self.serverListWindow,
-        text="Connect", pady=5, padx=20, command=threading.Thread(target=self.selected).start)
+        text="Connect", pady=5, padx=20, command=threading.Thread(target=self.connect, daemon=True).start)
         self.submit.place(x=200, y=200)
 
 
@@ -104,13 +101,12 @@ class Servers:
         self.serverListWindow.mainloop()
 
 
-    def selected(self):
-        for server in self.listbox.curselection():
-            self.connect(self.listbox.get(server))
+    def connect(self):
+        resp = False
+        while resp is False:
+            server = self.listbox.curselection()[0]
+            resp = irc.main(self.listbox.get(server), self.username)
 
-
-    def connect(self,server):
-        irc.main(server, self.username)  
 
 
     def add(self):

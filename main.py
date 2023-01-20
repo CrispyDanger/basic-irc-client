@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 from windows import Register,Servers
-from database import Database
+from data.database import Database
 
 
 
@@ -12,6 +12,7 @@ class MainWindow:
         self.app.title("Login")
         self.app.geometry("300x250")
         self.db = Database()
+        self.db.createTable()
         self.label = Label(self.app, text="Welcome To App")
         self.label.place(x=95, y=40)
 

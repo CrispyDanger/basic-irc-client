@@ -1,8 +1,0 @@
-{
-    "server":"irc.ircnet.com",
-    "port":6667,
-    "channel": "#worldchat",
-    "botnick":"web-13",
-    "botpassw":"",
-    "log_to_file":"true"
-}
