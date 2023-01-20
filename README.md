@@ -6,4 +6,7 @@ Please use this command to download all necessary modules
 
 ```pip install -r requirements.txt```
 
+Use this command to start this client
+```python main.py```
+
 
