@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import messagebox
-from windows import Register,Servers
+from client import Register,Servers
 from data.database import Database
 
 
