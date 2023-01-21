@@ -1,6 +1,6 @@
 from datetime import datetime
 import re
-import socket
+import socket, ssl
 import time
 from threading import Thread
 from threading import Event
@@ -32,6 +32,7 @@ class IRCClient:
 
     def connect(self):
         print(f"[/] Connecting to {self.server}\n")
+        print("Please wait for successful connection message.\n")
         self.irc.connect((self.server, self.port))
         self.irc.send(f"USER {self.username} {self.username} {self.username} :Hello, everyone!\r\n".encode())
         self.irc.send(f"NICK {self.username}\r\n".encode())
