@@ -1,4 +1,4 @@
-# trpz-coursework
+# Basic IRC-client made with Python, Tkinter, SQLite3
 
 This client was made with Python 3.11.
 
