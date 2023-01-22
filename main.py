@@ -13,7 +13,7 @@ class MainWindow:
         self.app.geometry("300x250")
         self.db = Database()
         self.db.createTable()
-        self.label = Label(self.app, text="Welcome To App")
+        self.label = Label(self.app, text="IRC Client Login")
         self.label.place(x=95, y=40)
 
 

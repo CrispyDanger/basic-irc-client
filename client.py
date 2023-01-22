@@ -12,7 +12,7 @@ class Register:
 
     def __init__(self):
         self.registerWindow = Tk()
-        self.registerWindow.title("Register with Python")
+        self.registerWindow.title("Register")
         self.registerWindow.geometry("300x250")
         self.label = Label(self.registerWindow, text="Register")
         self.label.place(x=95, y=40)
@@ -77,6 +77,10 @@ class Servers:
         text="Add", pady=5, padx=20, command=self.add)
         self.submit.place(x=200, y=140)
 
+        self.submit = Button(self.serverListWindow,
+        text="Remove", pady=5, padx=20, command=self.remove)
+        self.submit.place(x=280, y=140)
+
 
         lst = db.serverList(self.username)
 
@@ -106,6 +110,13 @@ class Servers:
         while resp is False:
             server = self.listbox.curselection()[0]
             resp = irc.main(self.listbox.get(server), self.username)
+
+
+    def remove(self):
+        server = self.listbox.curselection()[0]
+        db.RemoveData(self.listbox.get(server), self.username)
+        self.listbox.delete(self.listbox.curselection()[0])
+        messagebox.showwarning("Warning","Successfully removed server from your list")
 
 
 

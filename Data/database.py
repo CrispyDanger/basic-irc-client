@@ -23,7 +23,7 @@ class Database:
                                                     server TEXT NOT NULL, 
                                                     port INTEGER NOT NULL, 
                                                     channel TEXT NOT NULL,
-                                                    username INTEGER NOT NULL UNIQUE,
+                                                    username INTEGER NOT NULL,
                                                     FOREIGN KEY(username) REFERENCES cred(username)
                                                     ON DELETE CASCADE ON UPDATE CASCADE);
                                                     """
@@ -96,3 +96,13 @@ class Database:
         if rows == []:
             return 1
         return 0
+
+
+    
+    def RemoveData(self, data_inp, username):
+        data = data_inp + (username, )
+        search_data = """
+                    DELETE FROM servers WHERE server = (?) AND port = (?) AND channel = (?) AND username = (?);"""
+
+        self.conn.execute(search_data, data)
+        self.conn.execute("COMMIT;")
