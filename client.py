@@ -4,7 +4,6 @@ import bcrypt
 from data.database import Database
 import irc
 import threading
-
 db = Database()
 
 
@@ -16,6 +15,14 @@ class Register:
         self.registerWindow.geometry("300x250")
         self.label = Label(self.registerWindow, text="Register")
         self.label.place(x=95, y=40)
+
+
+        self.label = Label(self.registerWindow, text="Login")
+        self.label.place(x=90, y=60)
+
+
+        self.label = Label(self.registerWindow, text="Password")
+        self.label.place(x=90, y=100)
         
         self.username_entry = Entry(self.registerWindow, relief=FLAT)
         self.username_entry.place(x=70, y=80)
@@ -135,7 +142,7 @@ class Servers:
                 db.addServer(data)
                 self.listbox.insert(0, str(data[:3]))
             else:
-                messagebox.showwarning("Warning", "Server already in the list")
+                messagebox.showwarning("Warning", "Server is already in your list")
         else:
             messagebox.showwarning("Warning", "Port is not a number or exceeds 4 symbol limit")
 

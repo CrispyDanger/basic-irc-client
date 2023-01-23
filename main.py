@@ -20,6 +20,8 @@ class MainWindow:
         self.label = Label(self.app, text="Login")
         self.label.place(x=90, y=60)
         
+        self.label = Label(self.app, text="Password")
+        self.label.place(x=90, y=100)
 
         self.username_entry = Entry(
         self.app, relief=FLAT)
